@@ -1,0 +1,24 @@
+#debug: true
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework.web: DEBUG
+  file: logbacklogging.log
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mysql://localhost:3306/product_schema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: rootroot
+
+hibernate:
+  dialect:
+    storage_engine: innodb
