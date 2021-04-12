@@ -12,4 +12,9 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, S
     @Modifying(clearAutomatically = true )
     @Query("update Product p set p.title = :title, p.desc=:desc, p.imagePath=:imagePath,p.unitPrice=:unitPrice where p.id = :id")
     int updateProductRepo(@Param("id") String id, @Param("title") String title, @Param("unitPrice") double unitPrice, @Param("imagePath") String imagePath, @Param("desc") String desc);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update Product p set p.quantity = p.quantity- :qty where p.id=:id ")
+    int reduceQuantity(@Param("id") String id, @Param("qty") int qty);
+
 }

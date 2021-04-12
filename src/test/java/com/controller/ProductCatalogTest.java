@@ -60,6 +60,12 @@ public class ProductCatalogTest {
 
     @Test
     @Order(5)
+    public void testReduceProductQty() throws Exception{
+        this.mvc.perform(MockMvcRequestBuilders.put("/product/reduceBy/2?id=1").contentType(MediaType.APPLICATION_JSON).content("1")).andExpect(status().isOk());
+    }
+
+    @Test
+    @Order(6)
     public void testDeleteProduct() throws Exception {
         String testProductId = getCreateProductData().getString("id");
         this.mvc.perform(MockMvcRequestBuilders.delete("/product/" + testProductId)) .andExpect(status().isOk());
@@ -73,6 +79,7 @@ public class ProductCatalogTest {
         createProductData.put("desc", "test product 1");
         createProductData.put("imagePath","Image Path");
         createProductData.put("unitPrice",100.0);
+        createProductData.put("quantity",20);
 
         return createProductData;
     }
@@ -84,6 +91,7 @@ public class ProductCatalogTest {
         createProductData.put("desc","test product 1 title updated");
         createProductData.put("imagePath","Image Path");
         createProductData.put("title", "test product 1 updated");
+        createProductData.put("quantity",20);
         return createProductData;
     }
 }

@@ -19,19 +19,22 @@ public class Product {
     private String id;
 
     @NonNull
-    @Column
+    @Column(length = 300)
     private String title;
 
-    @Column(name="description")
+    @Column(name="description",length = 500)
     private String desc;
 
     @NotNull
-    @Column
+    @Column(length = 1000)
     private String imagePath;
 
     //@Min(value=1)
     @Column
     private double unitPrice;
+
+    @Column
+    private int quantity;
 
     public Product(){}
     @Override

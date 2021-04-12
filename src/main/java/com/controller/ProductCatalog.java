@@ -42,6 +42,10 @@ public class ProductCatalog {
         productService.deleteById(id);
         return "Product Removed Successfully.";
     }
+    @PutMapping(path="/reduceBy/{qty}")
+    public int reduceProductQty(@PathVariable int qty, @RequestParam String id){
+        return productService.reduceQuantityBy(id,qty);
+    }
     @GetMapping("/customHealth")
     public String healthCheck(){
         return "Server is working";

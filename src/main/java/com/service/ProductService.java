@@ -34,4 +34,8 @@ public class ProductService {
     public int update(String id, Product product){
        return productRepository.updateProductRepo(id,product.getTitle(),product.getUnitPrice(),product.getImagePath(), product.getDesc());
     }
+    @Transactional
+    public int reduceQuantityBy(String id, int qty){
+        return productRepository.reduceQuantity(id,qty);
+    }
 }
